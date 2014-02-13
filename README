@@ -1,0 +1,52 @@
+This is a utility made to update client-side forge mods.
+
+It is meant to be an alternative distribution method for private modpacks 
+that does not require a 3rd party launcher (e.g. Technic, FTB)
+
+Everything a server admin needs to send to clients in order to update are 
+contained within target/MCModSync.jar. There are also some helper scripts in
+the target/ folder for clients that prefer to not use the command line directly.
+
+Clients will run this utility to automatically:
+    - Download the most recent version of a modpack
+    - Move the modpack's contents to the client's minecraft directory
+    - Run the forge installer (if a fullupdate is chosen)
+
+Server Admins must create a modpack and host it somewhere reliable, then
+put a URL to that file in the config.yaml (contained within the MCModSync.jar)
+
+The modpack must be in .zip format, and must be of the following structure.
+
+   /
+   |-config/
+   |---<all updating configs go in here>
+   |-forge/
+   |---<place the forge installer here>
+   |-mods/
+   |---<all client-side mods go here>
+
+The jar contains the updater itself, as well as a file named config.yaml
+Get to this file using your favorite zip explorer to open the jar, then edit
+config.yaml to point to the location of your mod pack.
+You may also change the name of the downloaded file and temp directory.
+
+Another way to do this is to edit config.yaml within this project and rebuild
+the jar by using the ant script.
+
+In the future, I might decide to create a server-side version of this tool that
+will set up all of this for you for every update, including the creation of the
+modpack from the server's current setup that is ready to be downloaded and 
+distributed, and may also create the distributable MCModSync.jar with the
+correct link to the modpack.
+
+All of the client's existing mods will be moved into a backup directory.
+However, only the last backup will be saved, and new files of the exact same 
+name will overwrite older backups. Because most mods change the name of the file
+every version, this will eventually result in an archive of previous versions.
+
+Config files, however, might not have an archive this deep, as they don't
+change their names as often.
+
+Any configs that exist in the client's config/ directory but are not present
+in the modpack will not be moved to the backup directory. This is meant to
+conserve settings for client-side mods that are stored inside config files.
