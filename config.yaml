@@ -1,5 +1,3 @@
-zipUrl: "https://dl.dropbox.com/u/20588547/Buddhacraft/Package/ModPackage.zip"
-#zipUrl: "file:///home/alex/Dropbox/Public/Buddhacraft/Package/ModPackage.zip"
-#zipUrl: "file://C:\\Users\\Alex\\Dropbox\\Public\\Buddhacraft\\Package\\ModPackage.zip"
+zipUrl: "http://link.to.your/modpack.zip"
 tmpDir: "ModPackage"
-instanceName: "Buddhacraft"
+instanceName: "MyModPack"
